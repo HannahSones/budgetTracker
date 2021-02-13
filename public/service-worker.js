@@ -34,13 +34,14 @@ self.addEventListener('install', function (evt) {
   self.skipWaiting();
 });
 
-self.addEventListener("activate", function (event) {
-  event.waitUntil(
+// activate
+self.addEventListener("activate", function (evt) {
+  evt.waitUntil(
     caches.keys().then(keyList => {
       return Promise.all(
         keyList.map(key => {
           if (key !== CACHE_NAME && key !== DATA_CACHE_NAME) {
-            console.log("cache data is removed", key);
+            console.log("Removing old cache data", key);
             return caches.delete(key);
           }
         })
@@ -51,33 +52,33 @@ self.addEventListener("activate", function (event) {
   self.clients.claim();
 });
 
+// fetch
+self.addEventListener("fetch", evt => {
+  if (evt.request.url.includes('/api/')) {
+    console.log('[Service Worker] Fetch(data)', evt.request.url);
 
-self.addEventListener("fetch", function (event) {
-  if (event.request.url.includes("/api/")) {
-    event.respondWith(
+    evt.respondWith(
       caches.open(DATA_CACHE_NAME).then(cache => {
-        return fetch(event.request)
+        return fetch(evt.request)
           .then(response => {
-
             if (response.status === 200) {
-              cache.put(event.request.url, response.clone());
+              cache.put(evt.request.url, response.clone());
             }
-
             return response;
           })
-          .catch(error => {
-            console.log(error);
-            return cache.match(event.request);
+          .catch(err => {
+            return cache.match(evt.request);
           });
-      }).catch(error => console.log(error))
+      })
     );
-
     return;
   }
 
-  event.respondWith(
-    caches.match(event.request).then(function (response) {
-      return response || fetch(event.request);
+  evt.respondWith(
+    caches.open(CACHE_NAME).then(cache => {
+      return cache.match(evt.request).then(response => {
+        return response || fetch(evt.request);
+      });
     })
   );
 });
