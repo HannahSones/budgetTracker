@@ -40,7 +40,7 @@ The Budget Tracker app allows users to add expenses and deposits to their budget
 
 -------------
 ## Link to Application
-![Live application deployed on Heroku](https://thawing-reaches-04479.herokuapp.com/)
+[Live application deployed on Heroku](https://thawing-reaches-04479.herokuapp.com/)
 
 -------------
 ## Further development
