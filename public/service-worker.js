@@ -5,10 +5,10 @@ const DATA_CACHE_NAME = "data-cache-v1";
 
 const FILES_TO_CACHE = [
   "/",
-  "/index.html",
-  "/styles.css",
+  "index.html",
+  "styles.css",
   "index.js",
-  "/manifest.webmanifest",
+  "manifest.webmanifest",
   "database.js",
   "icons/icon-192x192.png",
   "icons/icon-512x512.png"
@@ -54,7 +54,7 @@ self.addEventListener("activate", function (evt) {
 
 // fetch
 self.addEventListener("fetch", evt => {
-  if (evt.request.url.includes('/api/')) {
+  if (evt.request.url.includes('/api/transaction')) {
     console.log('[Service Worker] Fetch(data)', evt.request.url);
 
     evt.respondWith(
