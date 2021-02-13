@@ -43,7 +43,6 @@ function checkDatabase() {
       })
         .then(response => response.json())
         .then(() => {
-          // delete records if successful
           const transaction = db.transaction(["pending"], "readwrite");
           const store = transaction.objectStore("pending");
           store.clear();
@@ -51,11 +50,6 @@ function checkDatabase() {
     }
   };
 }
-function deletePending() {
-  const transaction = db.transaction(["pending"], "readwrite");
-  const store = transaction.objectStore("pending");
-  store.clear();
-}
 
-// listen for app coming back online
+// listen for app to come back online
 window.addEventListener("online", checkDatabase);
