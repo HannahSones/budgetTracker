@@ -45,6 +45,10 @@ The Budget Tracker app allows users to add expenses and deposits to their budget
 [Live application deployed on Heroku](https://thawing-reaches-04479.herokuapp.com/)
 
 -------------
+## Updates
+* 14.03.21 | I have since updated the file path names in the `FILES_TO_CACHE` array to make the application function flawlessly offline.
+
+-------------
 ## Further development
 * I'd like to add a delete transaction button for improved functionality, so that a user can remove an entry if they have added it incorrectly.
 * I'd like to update the CSS to improve the user interface of the app, making it more polished and user friendly.
