@@ -46,6 +46,9 @@ function checkDatabase() {
           const transaction = db.transaction(["pending"], "readwrite");
           const store = transaction.objectStore("pending");
           store.clear();
+        })
+          .catch((err) => {
+            console.log(err);
         });
     }
   };

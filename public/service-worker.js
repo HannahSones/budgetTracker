@@ -20,6 +20,10 @@ self.addEventListener("install", function (event) {
     caches.open(CACHE_NAME).then((cache) => cache.addAll(FILES_TO_CACHE))
   );
 
+  event.waitUntil(
+    caches.open(DATA_CACHE_NAME).then((cache) => cache.add('/api/transaction'))
+  );
+
   self.skipWaiting();
 });
 
