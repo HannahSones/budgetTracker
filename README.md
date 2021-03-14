@@ -30,6 +30,8 @@ The Budget Tracker app allows users to add expenses and deposits to their budget
 * When online, the application will add or subtract the value from the total and depict this change on the graph.
 * If the application is offline, the service worker will catch the error and store the request. Once the application comes back online, it will update with the request made.
 
+![Budget Tracker app](https://github.com/HannahSones/budgetTracker/blob/main/public/BudgetTracker.png)
+
 -------------
 
 ## Installation
