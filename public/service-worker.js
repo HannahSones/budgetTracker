@@ -9,9 +9,9 @@ const FILES_TO_CACHE = [
   "styles.css",
   "index.js",
   "manifest.json",
-  "database.js",
-  "/icons/icon-192x192.png",
-  "/icons/icon-512x512.png",
+  "/database.js",
+  "icons/icon-192x192.png",
+  "icons/icon-512x512.png",
 ];
 
 // install
